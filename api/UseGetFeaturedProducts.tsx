@@ -3,7 +3,6 @@ import axios from "axios";
 
 const UseGetFeaturedProducts = () => {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?filters[isFeatured][$eq]=true&populate=*`;
-  console.log("URL", url);
 
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,7 +16,6 @@ const UseGetFeaturedProducts = () => {
         setLoading(false);
       } catch (error: any) {
         setError(error);
-        console.error(error);
       } finally {
         setLoading(false);
       }

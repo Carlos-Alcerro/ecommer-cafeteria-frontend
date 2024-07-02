@@ -17,7 +17,6 @@ const GetProductFileld = () => {
         setLoading(false);
       } catch (error: any) {
         setError(error);
-        console.log(error);
       }
     })();
   }, [url]);
