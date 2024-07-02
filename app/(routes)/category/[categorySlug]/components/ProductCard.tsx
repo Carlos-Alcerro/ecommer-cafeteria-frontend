@@ -4,6 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { useCart } from "@/hooks/useCart";
 import { FormatPrice } from "@/lib/FormatPrice";
 import { ProductType } from "@/types/product";
 import { Expand, ShoppingCart } from "lucide-react";
@@ -17,12 +18,10 @@ type ProductCardProps = {
 
 const ProductCard = (props: ProductCardProps) => {
   const { product } = props;
+  const { addItem } = useCart();
   const router = useRouter();
   return (
-    <Link
-      href={`/product/${product.attributes.slug}`}
-      className="relative p-2 transition-all duration-100 rounded-lg hover:shadow-md"
-    >
+    <div className="relative p-2 transition-all duration-100 rounded-lg hover:shadow-md">
       <div className="absolute flex items-center justify-between gap-3 px-2 z-[1] top-4">
         <p className="px-2 py-1 text-xs text-white bg-black rounded-full dark:bg-white dark:text-black w-fit">
           {product.attributes.taste}
@@ -57,7 +56,7 @@ const ProductCard = (props: ProductCardProps) => {
                     className="text-gray-600"
                   />
                   <IconButton
-                    onClick={() => console.log("Product")}
+                    onClick={() => addItem(product)}
                     icon={<ShoppingCart size={20} />}
                     className="text-gray-600"
                   />
@@ -71,7 +70,7 @@ const ProductCard = (props: ProductCardProps) => {
       <p className="font-bold text-center">
         {FormatPrice(product.attributes.price)}
       </p>
-    </Link>
+    </div>
   );
 };
 

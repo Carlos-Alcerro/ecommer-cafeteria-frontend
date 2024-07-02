@@ -16,7 +16,6 @@ const GetCategoryProducts = (slug: string | string[]) => {
         setLoading(false);
       } catch (error: any) {
         setError(error);
-        console.log(error);
       }
     })();
   }, [url]);
