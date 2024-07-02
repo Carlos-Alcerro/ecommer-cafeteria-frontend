@@ -44,7 +44,7 @@ const ProductCard = (props: ProductCardProps) => {
                 alt="Image"
                 width={400}
                 height={500}
-                className="rounded-xl"
+                className="rounded-xl h-[200px]"
               />
               <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 bottom-5">
                 <div className="flex justify-end items-center gap-x-6">
