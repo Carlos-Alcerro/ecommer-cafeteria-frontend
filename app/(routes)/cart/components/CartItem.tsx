@@ -22,7 +22,7 @@ const CartItem = (props: CartItemProp) => {
         onClick={() => router.push(`/product/${product.attributes.slug}`)}
       >
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`}
+          src={`${product.attributes.images.data[0].attributes.url}`}
           alt={product.attributes.productName}
           className="w-24 h-24 overflow-hidden rounded-md sm:w-48 sm:h-32 transition duration-300 hover:scale-110"
           width={300}

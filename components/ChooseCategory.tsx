@@ -28,7 +28,7 @@ const ChooseCategory = () => {
           result !== null &&
           result.map((category: CategoryType) => {
             const { attributes, id } = category;
-            const urlImage = `${process.env.NEXT_PUBLIC_BACKEND_URL}${category.attributes.mainImage.data.attributes.url}`;
+            const urlImage = `${category.attributes.mainImage.data.attributes.url}`;
 
             return (
               <Link

@@ -42,7 +42,7 @@ const FeaturedProducts = () => {
                 origin,
               } = attributes;
 
-              const urlImage = `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`;
+              const urlImage = `${images.data[0].attributes.url}`;
 
               return (
                 <CarouselItem
