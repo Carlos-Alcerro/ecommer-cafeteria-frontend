@@ -73,9 +73,9 @@ const CartPage = () => {
           </ul>
         </div>
         <div className="max-w-xl">
-          <div className="p-6 rounded-lg bg-slate-100">
+          <div className="p-6 rounded-lg bg-slate-100 dark:bg-gray-800">
             <p className="mb-3 text-lg font-semibold">Resumen de orden</p>
-            <Separator />
+            <Separator className="dark:bg-white" />
             <div className="flex justify-between gap-5 my-4">
               <p>Total de Orden</p>
               <p>{FormatPrice(totalPrice)}</p>

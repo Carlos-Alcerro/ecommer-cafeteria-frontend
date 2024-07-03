@@ -4,7 +4,6 @@ import LovedItemsProducts from "./components/LovedItemsProducts";
 
 const ProductsLoved = () => {
   const { lovedItem } = UseLovedProducts();
-  console.log(lovedItem);
 
   return (
     <div className="max-w-4xl py-4 mx-auto sm:py-32 sm:px-24">

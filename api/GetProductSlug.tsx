@@ -15,7 +15,6 @@ const GetProductSlug = (slug: string | string[]) => {
         setLoading(false);
       } catch (error: any) {
         setError(error);
-        console.log(error);
         setLoading(false);
       }
     })();

@@ -15,7 +15,6 @@ const GetProducts = () => {
         setLoading(false);
       } catch (error: any) {
         setError(error);
-        console.log(error);
         setLoading(false);
       }
     })();
