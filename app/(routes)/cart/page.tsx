@@ -8,8 +8,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { makePaymentRequest } from "@/api/Payment";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
+  const router = useRouter();
   const { items, removeAll } = useCart();
   const totalPrice = items.reduce(
     (total, item) => item.attributes.price + total,
@@ -26,8 +28,7 @@ const CartPage = () => {
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
-      removeAll();
-      localStorage.removeItem("cart-storage");
+      router.push("/confirmation");
     } catch (error) {
       console.log(error);
     }
