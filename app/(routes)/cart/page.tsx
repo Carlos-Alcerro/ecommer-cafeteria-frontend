@@ -23,11 +23,11 @@ const CartPage = () => {
       const res = await makePaymentRequest.post("/api/orders", {
         products: items,
       });
-      removeAll();
-      localStorage.removeItem("cart-storage");
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
+      removeAll();
+      localStorage.removeItem("cart-storage");
     } catch (error) {
       console.log(error);
     }
