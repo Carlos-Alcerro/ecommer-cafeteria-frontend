@@ -1,10 +1,18 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/useCart";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const SuccessPage = () => {
   const router = useRouter();
+  const { removeAll } = useCart();
+
+  useEffect(() => {
+    removeAll();
+    localStorage.removeItem("cart-storage");
+  }, [removeAll]);
   return (
     <div className="max-w-5xl p-4 mx-auto sm:py-16 sm:px-24">
       <div className="flex flex-col-reverse gap-2 sm:flex-row">
