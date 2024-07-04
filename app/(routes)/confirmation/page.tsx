@@ -1,6 +1,5 @@
-// pages/confirmation.js
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 
 const ConfirmationPage = () => {
