@@ -4,9 +4,10 @@ import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/useCart";
 import { FormatPrice } from "@/lib/FormatPrice";
 import CartItem from "./components/CartItem";
-import { Skeleton } from "@/components/ui/skeleton";
 import { loadStripe } from "@stripe/stripe-js";
 import { makePaymentRequest } from "@/api/Payment";
+import Image from "next/image";
+import Link from "next/link";
 
 const CartPage = () => {
   const { items, removeAll } = useCart();
@@ -22,10 +23,11 @@ const CartPage = () => {
       const res = await makePaymentRequest.post("/api/orders", {
         products: items,
       });
+      removeAll();
+      localStorage.removeItem("cart-storage");
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
-      removeAll();
     } catch (error) {
       console.log(error);
     }
@@ -39,28 +41,25 @@ const CartPage = () => {
           {items.length === 0 && (
             <>
               <div className="flex gap-5">
-                <div>
-                  <Skeleton className="h-24 w-24 sm:w-48 sm:h-32" />
-                </div>
-                <div className="mt-2 gap-4">
-                  <Skeleton className="w-24 sm:w-48 h-[20px] block" />
-                  <Skeleton className="w-20 sm:w-32 h-[20px] block mt-2" />
-                  <div className="flex justify-between items-center mt-2">
-                    <Skeleton className="w-8 sm:w-16 h-[20px]" />
-                    <Skeleton className="w-8 sm:w-16 h-[20px]" />
+                <div className="flex flex-col-reverse justify-center items-center">
+                  <Link
+                    className="text-sm font-light mb-4 sm:mb-0 hover:text-sky-800 hover:underline mt-4 dark:hover:text-gray-300"
+                    href="/"
+                  >
+                    Volver al incio
+                  </Link>
+                  <div>
+                    <Image
+                      src="/CartEmpty.png"
+                      alt="CartEmpty"
+                      width={350}
+                      height={400}
+                    />
                   </div>
-                </div>
-              </div>
-              <div className="flex gap-5 mt-5">
-                <div>
-                  <Skeleton className="h-24 w-24 sm:w-48 sm:h-32" />
-                </div>
-                <div className="mt-2 gap-4">
-                  <Skeleton className="w-24 sm:w-48 h-[20px] block" />
-                  <Skeleton className="w-20 sm:w-32 h-[20px] block mt-2" />
-                  <div className="flex justify-between items-center mt-2">
-                    <Skeleton className="w-8 sm:w-16 h-[20px]" />
-                    <Skeleton className="w-8 sm:w-16 h-[20px]" />
+                  <div className="flex justify-between gap-4 items-center mb-4">
+                    <p className="text-xl font-semibold">
+                      Carrito de compras vacio
+                    </p>
                   </div>
                 </div>
               </div>
